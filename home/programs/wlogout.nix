@@ -49,21 +49,14 @@
       }
 
       window {
-        background-color: rgba(1, 1, 1, 0.6);
+        background-color: rgba(1, 1, 1, 0.4)
       }
 
       button {
-        border-radius: 4;
-      	text-decoration-color: #fbf1c7;
-        color: #fbf1c7;
-      	background-color: #1d2021;
+        border-radius: 4px;
 	      background-repeat: no-repeat;
 	      background-position: center;
 	      background-size: 25%;
-      }
-
-      button:focus, button:active, button:hover {
-      	background-color: #504945;
       }
 
       #lock {

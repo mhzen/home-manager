@@ -10,7 +10,7 @@
     nixvim = {
       enable = true;
       enableMan = true;
-      colorschemes.gruvbox.enable = true;
+      colorschemes.base16.enable = true;
       opts = {
         hlsearch = true;
         mouse = "a";

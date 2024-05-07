@@ -1,12 +1,14 @@
 {
-  # imports = [
-  #   ./gdm.nix
-  #   ./intel.nix
-  #   ./hyprland.nix
-  # ];
-  services.xserver.enable = true;
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  pkgs,
+  ...
+}:{
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+    excludePackages = [ pkgs.xterm ];
   };
+  programs.dconf.enable = true;
 }

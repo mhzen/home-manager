@@ -16,7 +16,11 @@
 
     # gui: hyprland
     ../common/gui
+    # ../common/gui/gdm.nix
+    # ../common/gui/sddm.nix
+    # ../common/gui/kde.nix
     ../common/gui/hyprland.nix
+    # ../common/gui/gnome.nix
 
     # intel hardware accelerationn
     ../common/gui/intel.nix

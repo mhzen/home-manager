@@ -3,7 +3,8 @@
   ...
 }:{
   imports = [
-    ./hyprland
+    # ./hyprland
+    # ./plasma
     ./theming.nix
     ./gaming.nix
     ./browsers.nix
@@ -30,6 +31,9 @@
     g4music
     imv
     pavucontrol
+    gimp
+    tauon
+    youtube-music
 
     # downloading
     transmission_4-gtk

@@ -84,6 +84,7 @@ in {
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
         proton-pass
         ublock-origin
+        sponsorblock
       ];
     };
   };

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -9,10 +10,13 @@
 
   stylix = {
     image = pkgs.fetchurl {
-      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/gruv-abstract-maze.png";
-      sha256 = "sha256-VRZnvn405EnAv1za4eoF/ryvGn9bMlC4vx9662qNSO4=";
+      # url = "https://w.wallhaven.cc/full/ex/wallhaven-exyzjo.jpg";
+      url = "https://w.wallhaven.cc/full/13/wallhaven-13j2vv.jpg";
+      # sha256 = "sha256-S0AFZDnn4K9j2D/WD9SWxDkNmwiXlLli1l6sy9g1qfg=";
+      sha256 = "sha256-rGK/M/GEj3FTrzSHhIXjPWv+97ILm26lFRNgm67h/Mk=";
     };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    # image = ../../../Pictures/wallhaven-3lepy9.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/ia-dark.yaml";
     polarity = "dark";
     fonts = {
       serif = {
@@ -36,6 +40,27 @@
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
       size = 22;
+    };
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    # theme = {
+    #   name = lib.mkForce "Breeze";
+    #   package = lib.mkForce pkgs.kdePackages.breeze-gtk;
+    # };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = {
+      name = "adwaita-dark";
+      package = pkgs.adwaita-qt6;
     };
   };
 

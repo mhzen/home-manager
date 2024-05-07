@@ -6,7 +6,6 @@
   imports = [
     ../waybar.nix
     ../anyrun.nix
-    # ./rofi.nix
     ../wlogout.nix
   ];
 
@@ -43,7 +42,7 @@
 
     monitor = [
         "eDP-1,preferred,auto,1.25"
-        ",preferred,auto,auto"
+        ",preferred,auto,auto,mirror"
       ];
 
       "$filemanager" = "nautilus";
@@ -66,7 +65,7 @@
 
       decoration = {
         blur.enabled = "false";
-        drop_shadow = "false";
+        drop_shadow = "true";
         shadow_range = "4";
         shadow_render_power = "3";
       };
@@ -133,9 +132,9 @@
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-        "$mainMod, Print, exec, $screenshot, output"
-        "$mainMod SHIFT, Print, exec, $screenshot, area"
-        "$mainMod ALT, Print, exec, $screenshot, screen"
+        "$mainMod, Print, exec, grimblast --cursor copysave output"
+        "$mainMod SHIFT, Print, exec, grimblast --cursor copysave area"
+        "$mainMod ALT, Print, exec, grimblast --cursor copysave screen"
 
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
@@ -158,6 +157,8 @@
         ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
         ",XF86AudioMute, exec,swayosd-client --output-volume mute-toggle"
         ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
+        ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
         ",XF86AudioNext, exec, playerctl next"
         ",XF86AudioPrev, exec, playerctl previous"
         ",XF86AudioPlay, exec, playerctl play-pause"

@@ -1,10 +1,4 @@
 {
-  imports = [
-    ./programs
-    ./terminal
-    ./services
-  ];
-
   nixpkgs = {
     overlays = [
     ];
@@ -14,12 +8,9 @@
   };
 
   home = {
-    username = "mham";
-    homeDirectory = "/home/mham";
     sessionVariables = {
       EDITOR = "nvim";
       TERMINAL = "kitty";
-      QT_WAYLAND_DECORATION = "adwaita";
     };
   };
 
