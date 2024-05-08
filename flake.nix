@@ -55,17 +55,17 @@
       pavilion = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./hosts/pavilion
+          ./os/pavilion
         ];
       };
     };
 
     homeConfigurations = {
       "mham@pavilion" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home/profile/pavilion.nix
+          ./home/pavilion.nix
         ];
       };
     };
