@@ -2,13 +2,7 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-    };
-  };
-
-  home = {
-    sessionVariables = {
-      EDITOR = "nvim";
-      TERMINAL = "kitty";
+      allowUnfreePredicate = _: true;
     };
   };
 

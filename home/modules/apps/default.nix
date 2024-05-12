@@ -1,29 +1,14 @@
 {pkgs, ...}: {
   imports = [
-    ./browsers.nix
-    ./terminals.nix
+    ./firefox.nix
+    ./kitty.nix
   ];
 
   home.packages = with pkgs; [
-    # internet stuff
-    vesktop
-
-    # files
-    cinnamon.nemo-with-extensions
-
     # docs
     zathura
 
-    # customizations
-    papirus-icon-theme
-    qadwaitadecorations
-    nerdfonts
-    bibata-cursors
-
     # multimedia
-    mpv
-    g4music
-    imv
     pavucontrol
     gimp
     tauon
@@ -38,5 +23,8 @@
 
   xdg.mimeApps = {
     enable = true;
+    defaultApplications = {
+      "application/pdf" = ["zathura.desktop"];
+    };
   };
 }

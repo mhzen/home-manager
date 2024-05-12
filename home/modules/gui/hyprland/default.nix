@@ -1,11 +1,14 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
+    inputs.hyprland.homeManagerModules.default
     ../wayland-wm/waybar.nix
     ../wayland-wm/anyrun.nix
+    ../wayland-wm/rofi.nix
     ../wayland-wm/wlogout.nix
   ];
 
@@ -14,13 +17,13 @@
     hyprlock
     hypridle
     hyprcursor
-    wofi
     cliphist
     wl-clipboard
     grimblast
     swaynotificationcenter
     swayosd
     wlsunset
+    brightnessctl
   ];
 
   wayland.windowManager.hyprland = {
@@ -28,6 +31,11 @@
     systemd.enable = true;
     xwayland.enable = true;
     package = pkgs.hyprland;
+    plugins = [
+      # inputs.hy3.packages.${pkgs.system}.hy3
+      # inputs.hy3.packages."x86_64-linux".hy3
+      # hy3.packages.${pkgs.system}.hy3
+    ];
     settings = {
       exec-once = [
         "${lib.getExe pkgs.waybar}"
@@ -38,6 +46,7 @@
         "${pkgs.wl-clipboard}/bin/wl-paste --type images --watch cliphist store"
         "${pkgs.swaynotificationcenter}/bin/swaync"
         "${pkgs.swayosd}/bin/swayosd-server"
+        # "avizo-service"
       ];
 
       monitor = [
@@ -45,11 +54,11 @@
         ",preferred,auto,auto,mirror"
       ];
 
-      "$filemanager" = "nautilus";
-      "$menu" = "anyrun";
+      "$filemanager" = "nemo";
+      "$menu" = "rofi -show drun";
       "$terminal" = "kitty";
-      "$clipboard" = "cliphist list | wofi -S dmenu | cliphist decode | wl-copy";
-      "$powermenu" = "wlogout";
+      "$clipboard" = "cliphist list | rofi -dmenu -p 'clipboard' | cliphist decode | wl-copy";
+      "$powermenu" = "rofi -show power-menu -modi power-menu:rofi-power-menu";
       "$screenshot" = "grimblast --cursor copysave";
 
       input = {
@@ -58,28 +67,38 @@
       };
 
       general = {
-        gaps_in = "5";
-        gaps_out = "5";
-        layout = "dwindle";
+        gaps_in = "4";
+        gaps_out = "8";
+        layout = "master";
       };
 
       decoration = {
         blur.enabled = "false";
-        drop_shadow = "true";
+        drop_shadow = "false";
         shadow_range = "4";
         shadow_render_power = "3";
+        rounding = "4";
+      };
+
+      group.groupbar = {
+        render_titles = "false";
       };
 
       animations = {
         enabled = "yes";
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
+          # "windows, 1, 7, myBezier"
+          # "windowsOut, 1, 7, default, popin 80%"
+          # "border, 1, 10, default"
+          # "borderangle, 1, 8, default"
+          # "fade, 1, 7, default"
+          # "workspaces, 1, 6, default"
+          "windows, 1, 4, default, popin 35%"
+          "border, 1, 4, default"
+          "borderangle, 1, 4, default"
+          "fade, 1, 4, default"
+          "workspaces, 1, 4, default"
         ];
       };
 
@@ -98,10 +117,28 @@
       };
 
       windowrule = [
+        # Essentials
         "float, ^(pavucontrol)$"
-        # "float, ^(org.gnome.Nautilus)$"
-        # "size 1000 650, ^(org.gnome.Nautilus)$"
-        # "center, ^(org.gnome.Nautilus)$"
+        # "float, ^(nemo)$"
+        # "size 1000 650, ^(nemo)$"
+        # "center, ^(nemo)$"
+        "float, ^(imv)$"
+        "float, ^(mpv)$"
+        "float, ^(zathura)$"
+
+        # Popups
+        "float, class:^(GtkFileChooserDialog)$"
+        "float, class:^(pop-up)$"
+        "float, class:^(Organizer)$"
+        "float, class:^(task_dialog)$"
+
+        # Browser indicators
+        "float, class:^(firefox)$, title:^(Picture-in-Picture)"
+        "pin, class:^(firefox)$, title:^(Picture-in-Picture)"
+
+        # idle inhibit while watching videos
+        "idleinhibit focus, class:^(mpv)$"
+        "idleinhibit fullscreen, class:^(firefox)$"
       ];
 
       windowrulev2 = [
@@ -130,8 +167,9 @@
           "$mainMod SHIFT, J, resizeactive, 100 01"
           "$mainMod SHIFT, I, resizeactive, 0 -100"
           "$mainMod SHIFT, K, resizeactive, 0 100"
-          "$mainMod, S, togglespecialworkspace, magic"
-          "$mainMod SHIFT, S, movetoworkspace, special:magic"
+          "$mainMod, T, togglegroup"
+          # "$mainMod, S, togglespecialworkspace, magic"
+          # "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
           "$mainMod, Print, exec, grimblast --cursor copysave output"
           "$mainMod SHIFT, Print, exec, grimblast --cursor copysave area"
@@ -156,8 +194,8 @@
         );
       bindel = [
         ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
-        ",XF86AudioMute, exec,swayosd-client --output-volume mute-toggle"
         ",XF86AudioLowerVolume, exec, swayosd-client --output-volume lower"
+        ",XF86AudioMute, exec, swayosd-client --output-volume mute-toggle"
         ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
         ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
         ",XF86AudioNext, exec, playerctl next"

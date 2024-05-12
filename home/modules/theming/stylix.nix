@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  lib,
   ...
 }: {
   imports = [
@@ -9,14 +8,18 @@
   ];
 
   stylix = {
-    image = pkgs.fetchurl {
-      # url = "https://w.wallhaven.cc/full/ex/wallhaven-exyzjo.jpg";
-      url = "https://w.wallhaven.cc/full/13/wallhaven-13j2vv.jpg";
-      # sha256 = "sha256-S0AFZDnn4K9j2D/WD9SWxDkNmwiXlLli1l6sy9g1qfg=";
-      sha256 = "sha256-rGK/M/GEj3FTrzSHhIXjPWv+97ILm26lFRNgm67h/Mk=";
-    };
-    # image = ../../../Pictures/wallhaven-3lepy9.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ia-dark.yaml";
+    # image = pkgs.fetchurl {
+    #   # url = "https://w.wallhaven.cc/full/ex/wallhaven-exyzjo.jpg";
+    #   # sha256 = "sha256-S0AFZDnn4K9j2D/WD9SWxDkNmwiXlLli1l6sy9g1qfg=";
+    #   # url = "https://w.wallhaven.cc/full/13/wallhaven-13j2vv.jpg";
+    #   # sha256 = "sha256-rGK/M/GEj3FTrzSHhIXjPWv+97ILm26lFRNgm67h/Mk=";
+    #   # url = "https://w.wallhaven.cc/full/2y/wallhaven-2y2wg6.png";
+    #   # sha256 = "sha256-nFoNfk7Y/CGKWtscOE5GOxshI5eFmppWvhxHzOJ6mCA=";
+    #   url = "https://raw.githubusercontent.com/LierB/dotfiles/master/wallpapers/penrose-triangle-forest.png";
+    #   sha256 = "sha256-iIIUHgl3LXPFaSmJkw4ZMX36NftMfB/DWqcwhpatKOM=";
+    # };
+    image = ../../../resources/wallpaper/gruvbox-nix.png;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
     polarity = "dark";
     fonts = {
       serif = {
@@ -46,22 +49,18 @@
   gtk = {
     enable = true;
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "Gruvbox Plus Dark";
+      package = pkgs.gruvbox-plus-icons;
     };
-    # theme = {
-    #   name = lib.mkForce "Breeze";
-    #   package = lib.mkForce pkgs.kdePackages.breeze-gtk;
-    # };
   };
 
   qt = {
     enable = true;
-    platformTheme = "gnome";
-    style = {
-      name = "adwaita-dark";
-      package = pkgs.adwaita-qt6;
-    };
+    # platformTheme = "gnome";
+    # style = {
+    #   name = "adwaita-dark";
+    #   package = pkgs.adwaita-qt6;
+    # };
   };
 
   # home.pointerCursor = {

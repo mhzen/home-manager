@@ -74,6 +74,8 @@
         };
         backlight = {
           format = " {percent}%";
+          on-scroll-up = "swayosd-client --brightness raise";
+          on-scroll-down = "swayosd-client --brightness lower";
         };
         "power-profiles-daemon" = {
           format = "{icon}";

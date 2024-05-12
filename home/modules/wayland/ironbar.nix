@@ -27,9 +27,9 @@
         {
           type = "notifications";
         }
-        # {
-        #   type = "upower";
-        # }
+        {
+          type = "upower";
+        }
         {
           type = "tray";
         }

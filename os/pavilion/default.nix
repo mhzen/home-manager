@@ -11,7 +11,8 @@
     ../modules/core
 
     # hyprland setup
-    ../modules/gui/hyprland.nix
+    # ../modules/gui/hyprland.nix
+    ../modules/gui/plasma.nix
 
     # hardware setup
     # ../modules/hardware/audio.nix # taken care by hyprland
@@ -22,9 +23,11 @@
     ../modules/hardware/ssd.nix
 
     # services
-    ../modules/services/docker.nix
+    # ../modules/services/docker.nix
+    ../modules/services/podman.nix
     ../modules/services/dns.nix
     ../modules/services/kanata.nix
+    # ../modules/services/ollama.nix
   ];
 
   # boot

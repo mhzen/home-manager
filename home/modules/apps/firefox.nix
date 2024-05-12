@@ -22,9 +22,6 @@ in {
       id = 0;
       isDefault = true;
       extraConfig = builtins.concatStringsSep "\n" [
-        # (builtins.readFile "${betterfox}/Securefox.js")
-        # (builtins.readFile "${betterfox}/Fastfox.js")
-        # (builtins.readFile "${betterfox}/Peskyfox.js")
         (builtins.readFile "${betterfox}/user.js")
       ];
       settings = {
@@ -43,12 +40,6 @@ in {
         # https only mode
         "dom.security.https_only_mode" = true;
         "dom.security.https_only_mode_error_page_user_suggestions" = true;
-
-        # resets on shutdown
-        # "privacy.sanitize.sanitizeOnShutdown" = false;
-        # "privacy.clearOnShutdown.cache" = true;
-        # "privacy.clearOnShutdown.cookies" = true;
-        # "privacy.clearOnShutdown.offlineApps" = true;
 
         # dns
         "network.trr.uri" = "https://dns.nextdns.io/ed12d9";
@@ -81,31 +72,16 @@ in {
           };
         };
       };
-      extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
         proton-pass
         ublock-origin
         sponsorblock
+        sidebery
       ];
     };
   };
 
-  # programs.qutebrowser = {
-  #   enable = true;
-  #   settings = {
-  #     content.blocking = {
-  #       enabled = true;
-  #       method = "both";
-  #     };
-  #   };
-  # };
-
-  home.packages = with pkgs; [
-    brave
-  ];
-
   xdg.mimeApps.defaultApplications = {
-    "image/png" = ["org.gnome.Loupe.desktop"];
-    "video/mp4" = ["mpv.desktop"];
     "x-scheme-handler/http" = ["firefox.desktop"];
     "x-scheme-handler/https" = ["firefox.desktop"];
     "x-scheme-handler/chrome" = ["firefox.desktop"];

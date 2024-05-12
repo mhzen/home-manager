@@ -287,7 +287,11 @@
         direnv.enable = true;
         nix.enable = true;
         persistence.enable = true;
+        # neocord.enable = true;
+        toggleterm.enable = true;
       };
     };
   };
+
+  home.sessionVariables.EDITOR = "nvim";
 }

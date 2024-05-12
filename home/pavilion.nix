@@ -1,13 +1,19 @@
 {
   imports = [
     ./modules
-    ./modules/cli
-    ./modules/cli/distrobox.nix
-    ./modules/gui
-    ./modules/gui/gaming.nix
-    ./modules/gui/hyprland
-    ./modules/gui/stylix.nix
-    ./modules/services
+
+    ./modules/shell
+    ./modules/shell/distrobox.nix
+    ./modules/shell/beet.nix
+    ./modules/shell/zellij.nix
+
+    ./modules/apps
+    ./modules/apps/discord.nix
+    ./modules/apps/gaming.nix
+    ./modules/apps/qutebrowser.nix
+    ./modules/apps/spicetify.nix
+
+    ./modules/theming/stylix.nix
   ];
 
   home = {

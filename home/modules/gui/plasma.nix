@@ -21,11 +21,6 @@
 
     configFile = {
       baloofilerc."Basic Settings"."Indexing-Enabled" = false;
-      kwinrc.Desktops.Number = {
-        value = 2;
-        # Forces kde to not change this value (even through the settings app).
-        immutable = true;
-      };
     };
   };
 }

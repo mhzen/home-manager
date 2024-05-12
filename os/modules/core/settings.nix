@@ -28,20 +28,9 @@
   nix.settings = {
     experimental-features = "nix-command flakes";
     auto-optimise-store = lib.mkDefault true;
-    substituters = [
-      "https://cache.nixos.org"
-      "https://nyx.chaotic.cx"
-      "https://chaotic-nyx.cachix.org"
-      "https://anyrun.cachix.org"
-      "https://jakestanger.cachix.org"
-    ];
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nyx.chaotic.cx-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
-      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
-      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-      "jakestanger.cachix.org-1:VWJE7AWNe5/KOEvCQRxoE8UsI2Xs2nHULJ7TEjYm7mM="
-    ];
+    trusted-users = ["root" "@wheel"];
+    allowed-users = ["root" "@wheel"];
+    warn-dirty = false;
   };
 
   nix.gc = {
@@ -51,5 +40,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  # system.stateVersion = "23.11";
+  system.stateVersion = "23.11";
 }
