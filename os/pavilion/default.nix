@@ -35,7 +35,12 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_cachyos;
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        extraInstallCommands = ''
+          echo "default @saved" >> /boot/efi/loader/loader.conf
+        '';
+      };
       efi.canTouchEfiVariables = true;
     };
     supportedFilesystems = ["ntfs"];

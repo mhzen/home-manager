@@ -15,6 +15,8 @@
     ../features/media
     # ../features/gaming
 
+    ../features/services/syncthing.nix
+
     # ../features/desktop/plasma.nix
     ../features/desktop/hyprland
 
