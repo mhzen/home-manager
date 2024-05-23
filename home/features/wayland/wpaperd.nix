@@ -1,0 +1,3 @@
+{
+  programs.wpaperd.enable = true;
+}

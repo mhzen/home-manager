@@ -8,31 +8,32 @@
     ./hardware-configuration.nix
 
     # core configuration
-    ../modules/core
+    ../features/core
 
-    # hyprland setup
-    # ../modules/gui/hyprland.nix
-    ../modules/gui/plasma.nix
+    # desktop setup
+    ../features/gui/hyprland.nix
+    # ../features/gui/plasma.nix
 
     # hardware setup
-    # ../modules/hardware/audio.nix # taken care by hyprland
-    # ../modules/hardware/bluetooth.nix
-    ../modules/hardware/intel.nix
-    ../modules/hardware/powersave.nix
-    ../modules/hardware/ram.nix
-    ../modules/hardware/ssd.nix
+    # ../features/hardware/bluetooth.nix
+    ../features/hardware/intel.nix
+    ../features/hardware/powersave.nix
+    # ../features/hardware/tlp.nix
+    ../features/hardware/ppd.nix
+    ../features/hardware/ram.nix
+    ../features/hardware/ssd.nix
 
     # services
-    # ../modules/services/docker.nix
-    ../modules/services/podman.nix
-    ../modules/services/dns.nix
-    ../modules/services/kanata.nix
-    # ../modules/services/ollama.nix
+    # ../features/services/docker.nix
+    ../features/services/podman.nix
+    ../features/services/dns.nix
+    ../features/services/kanata.nix
+    ../features/services/flatpak.nix
   ];
 
   # boot
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
   boot = {
+    kernelPackages = pkgs.linuxPackages_cachyos;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
