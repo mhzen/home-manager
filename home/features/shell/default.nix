@@ -10,6 +10,7 @@
     ./zoxide.nix
     ./ripgrep.nix
     ./starship.nix
+    ./ouch.nix
 
     # git
     ./git.nix
@@ -30,11 +31,6 @@
     tealdeer
 
     nh # nixos and home manager wrapper
-
-    # archive stuff
-    p7zip
-    unzip
-    unrar
 
     fastfetch
 
