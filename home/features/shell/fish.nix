@@ -5,9 +5,6 @@
       fish_add_path ~/.local/bin
 
       set fish_greeting
-      set -x LUTRIS_SKIP_INIT 1
-
-      # starship init fish | source
     '';
     shellAbbrs = {
       rt = "trash put";
@@ -15,6 +12,14 @@
     };
     functions = {
       mkcd = "mkdir -pv $argv; cd $argv;";
+      yy = ''
+      	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+      	yazi $argv --cwd-file="$tmp"
+      	if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+      		cd -- "$cwd"
+      	end
+      	rm -f -- "$tmp"
+      '';
     };
   };
 }
