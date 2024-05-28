@@ -38,8 +38,7 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # stylix.url = "github:danth/stylix";
-    stylix.url = "git+file:/home/mham/dev/stylix";
+    stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland?submodules=1?ref=v0.40.0";
     anyrun = {
       url = "github:Kirottu/anyrun";

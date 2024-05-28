@@ -38,7 +38,7 @@
       systemd-boot = {
         enable = true;
         extraInstallCommands = ''
-          echo "default @saved" >> /boot/efi/loader/loader.conf
+          echo "default @saved" >> /boot/loader/loader.conf
         '';
       };
       efi.canTouchEfiVariables = true;
