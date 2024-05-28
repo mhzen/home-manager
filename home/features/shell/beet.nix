@@ -5,7 +5,6 @@
       directory = "${config.home.homeDirectory}/Music";
       library = "${config.home.homeDirectory}/Music/data";
       plugins = [
-        "mpdupdate"
         "lyrics"
         "thumbnails"
         "fetchart"

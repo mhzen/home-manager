@@ -8,13 +8,17 @@
   ];
 
   stylix = {
+    # image = pkgs.fetchurl {
+    #   name = "evening-sky.jpg";
+    #   url = "https://w.wallhaven.cc/full/3l/wallhaven-3l6jj9.jpg";
+    #   sha256 = "sha256-m4l83eNlBVwlpwwzLbF4xrR/cVujeb7uCjz1iWFw/Wk=";
+    # };
     image = pkgs.fetchurl {
-      name = "evening-sky.jpg";
-      url = "https://w.wallhaven.cc/full/3l/wallhaven-3l6jj9.jpg";
-      sha256 = "sha256-m4l83eNlBVwlpwwzLbF4xrR/cVujeb7uCjz1iWFw/Wk=";
+      name = "finalizer.png";
+      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/finalizer.png";
+      sha256 = "sha256-I1g+sVwIbjo4JOW5LIf7anYY7kJLT5ckPY0peplkG0U=";
     };
-    # image = ../../../resources/wallpaper/wallhaven-l8o29q.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ia-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
     polarity = "dark";
     fonts = {
       serif = {
