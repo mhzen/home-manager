@@ -48,11 +48,27 @@ in {
       };
       search = {
         force = true;
-        default = "DuckDuckGo";
-        order = ["DuckDuckGo" "Youtube" "Google" "MyNixOS"];
+        default = "Brave";
+        order = ["Brave" "DuckDuckGo" "Youtube" "Google" "MyNixOS"];
         engines = {
           "Bing".metaData.hidden = true;
           "Amazon".metaData.hidden = true;
+
+          "Brave" = {
+            updateInterval = 24 * 60 * 60 * 1000;
+            definedAliases = ["@br"];
+            urls = [
+              {
+                template = "https://search.brave.com/search";
+                params = [
+                  {
+                    name = "q";
+                    value = "{searchTerms}";
+                  }
+                ];
+              }
+            ];
+          };
 
           "MyNixOS" = {
             iconUpdateURL = "https://mynixos.com/favicon.ico";
