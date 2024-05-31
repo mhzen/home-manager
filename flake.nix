@@ -53,6 +53,10 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -66,6 +70,7 @@
       imports = [
         ./home/hosts
         ./os/hosts
+        ./pre-commit.nix
       ];
 
       perSystem = {
@@ -73,6 +78,20 @@
         pkgs,
         ...
       }: {
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            alejandra
+            git
+            nodePackages.prettier
+            nixFlakes
+            home-manager
+            nh
+            nil
+          ];
+          name = "dots";
+          DIRENV_LOG_FORMAT = "";
+        };
+
         formatter = pkgs.alejandra;
       };
     };
