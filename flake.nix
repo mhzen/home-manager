@@ -70,7 +70,7 @@
       imports = [
         ./home/hosts
         ./os/hosts
-        ./pre-commit.nix
+        inputs.pre-commit-hooks.flakeModule
       ];
 
       perSystem = {
@@ -86,10 +86,24 @@
             nixFlakes
             home-manager
             nh
-            nil
           ];
-          name = "dots";
+          name = "nix-config";
           DIRENV_LOG_FORMAT = "";
+          shellHook = ''
+            ${config.pre-commit.installationScript}
+          '';
+        };
+
+        pre-commit = {
+          settings.excludes = ["flake.lock"];
+
+          settings.hooks = {
+            alejandra.enable = true;
+            prettier = {
+              enable = true;
+              excludes = [".js" ".md" ".ts"];
+            };
+          };
         };
 
         formatter = pkgs.alejandra;
