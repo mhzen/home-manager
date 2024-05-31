@@ -2,27 +2,17 @@
   self,
   inputs,
   ...
-}: let
-  inherit (inputs.home-manager.lib) homeManagerConfiguration;
-
-  # get these into the module system
-  extraSpecialArgs = {inherit inputs self;};
-
-  homeImports = {
-    "mham@pavilion" = [
-      ./pavilion
-    ];
-  };
-  pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-in {
-  _module.args = {inherit homeImports;};
-
-  flake = {
-    homeConfigurations = {
-      "mham@pavilion" = homeManagerConfiguration {
-        modules = homeImports."mham@pavilion";
-        inherit pkgs extraSpecialArgs;
-      };
+}: {
+  flake.homeConfigurations = let
+    inherit (inputs.home-manager.lib) homeManagerConfiguration;
+    extraSpecialArgs = {inherit inputs self;};
+    pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+  in {
+    "mham@pavilion" = homeManagerConfiguration {
+      inherit pkgs extraSpecialArgs;
+      modules = [
+        ./pavilion
+      ];
     };
   };
 }
