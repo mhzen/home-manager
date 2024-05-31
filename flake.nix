@@ -49,41 +49,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
-    nixpkgs,
-    home-manager,
+    flake-parts,
     ...
-  } @ inputs: let
-    inherit (self) outputs;
-    systems = [
-      "x86_64-linux"
-    ];
-    forAllSystems = nixpkgs.lib.genAttrs systems;
-  in {
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
 
-    devShells = forAllSystems (system: import ./shell.nix {pkgs = nixpkgs.legacyPackages.${system};});
+      imports = [
+        ./home/hosts
+        ./os/hosts
+      ];
 
-    nixosConfigurations = {
-      pavilion = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./os/hosts/pavilion
-        ];
+      perSystem = {
+        config,
+        pkgs,
+        ...
+      }: {
+        formatter = pkgs.alejandra;
       };
     };
-
-    homeConfigurations = {
-      "mham@pavilion" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [
-          ./home/hosts/pavilion
-        ];
-      };
-    };
-  };
 }
