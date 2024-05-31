@@ -11,6 +11,7 @@
     ./ripgrep.nix
     ./starship.nix
     ./ouch.nix
+    ./yazi.nix
 
     # git
     ./git.nix
@@ -30,11 +31,8 @@
     man-pages
     tealdeer
 
-    nh # nixos and home manager wrapper
-
     fastfetch
 
-    yazi
     fd
     trashy
   ];

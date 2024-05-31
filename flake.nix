@@ -3,7 +3,7 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://cache.nixos.org"
+      "https://cache.nixos.org?priority=10"
       "https://nyx.chaotic.cx"
       "https://chaotic-nyx.cachix.org"
       "https://anyrun.cachix.org"
@@ -11,10 +11,10 @@
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nyx.chaotic.cx-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
-      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
-      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "nyx.chaotic.cx-1:hfnxsw4pj95ii/n17ridy40aghj12wff+gqk6sonit8="
+      "chaotic-nyx.cachix.org-1:hfnxsw4pj95ii/n17ridy40aghj12wff+gqk6sonit8="
+      "anyrun.cachix.org-1:pqbobmoji7nklsumv25u9qha9btjk65/c8vno3p346s="
+      "hyprland.cachix.org-1:a7pgxzmz7+chwvl3/pzj6jibmioijm7ypfp8pwtkugc="
     ];
   };
 
@@ -71,7 +71,7 @@
       pavilion = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./os/pavilion
+          ./os/hosts/pavilion
         ];
       };
     };
@@ -81,7 +81,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home/pavilion
+          ./home/hosts/pavilion
         ];
       };
     };

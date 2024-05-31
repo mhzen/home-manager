@@ -1,6 +1,6 @@
-{
+{lib, ...}: {
   services = {
     thermald.enable = true;
+    power-profiles-daemon.enable = lib.mkDefault true;
   };
-  # powerManagement.powertop.enable = true;
 }

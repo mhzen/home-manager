@@ -4,6 +4,12 @@
   config,
   ...
 }: {
+  imports = [
+    ./cachix.nix
+    ./nix-ld.nix
+    ./nh.nix
+  ];
+
   nixpkgs = {
     config = {
       allowUnfree = true;
