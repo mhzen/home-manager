@@ -95,21 +95,28 @@
         }
         {
           action = "<cmd>bnext<CR>";
-          key = "<leader>bh";
+          key = "]b";
           options = {
             silent = true;
           };
         }
         {
           action = "<cmd>bprevious<CR>";
-          key = "<leader>bl";
+          key = "[b";
           options = {
             silent = true;
           };
         }
         {
-          action = "<cmd>e #<CR>";
-          key = "<leader>bb";
+          action = "<cmd>bnext<CR>";
+          key = "<S-l>";
+          options = {
+            silent = true;
+          };
+        }
+        {
+          action = "<cmd>bprevious<CR>";
+          key = "<S-h>";
           options = {
             silent = true;
           };
@@ -117,6 +124,13 @@
         {
           action = "<cmd>BufferDelete<CR>";
           key = "<leader>bd";
+          options = {
+            silent = true;
+          };
+        }
+        {
+          action = "<cmd>ToggleTerm<CR>";
+          key = "<leader>ft";
           options = {
             silent = true;
           };
@@ -155,7 +169,6 @@
         cmp_luasnip.enable = true;
 
         # editors
-        # neo-tree.enable = true;
         oil.enable = true;
         telescope = {
           enable = true;
@@ -165,12 +178,8 @@
         };
         flash.enable = true;
         gitsigns.enable = true;
-        conform-nvim.enable = true;
-        lint.enable = true;
-        # nvim-autopairs.enable = true;
-        # comment = {
-        #   enable = true;
-        # };
+        # conform-nvim.enable = true;
+        # lint.enable = true;
 
         # lsp
         lsp = {
@@ -208,15 +217,12 @@
         cmp-treesitter.enable = true;
 
         # ui
-        barbar = {
+        bufferline = {
           enable = true;
-          autoHide = true;
-          clickable = true;
         };
         lualine = {
           enable = true;
           iconsEnabled = true;
-          # theme = "onedark";
           componentSeparators = {
             left = " ";
             right = " ";
@@ -239,36 +245,6 @@
           };
         };
         which-key.enable = true;
-        # noice = {
-        #   enable = true;
-        #   lsp = {
-        #     override = {
-        #       "vim.lsp.util.convert_input_to_markdown_lines" = true;
-        #       "vim.lsp.util.stylize_markdown" = true;
-        #       "cmp.entry.get_documentation" = true;
-        #     };
-        #   };
-        #   cmdline = {
-        #     view = "cmdline";
-        #   };
-        #   presets = {
-        #     bottom_search = true; # use a classic bottom cmdline for search
-        #     command_palette = true; # position the cmdline and popupmenu together
-        #     long_message_to_split = true; # long messages will be sent to a split
-        #     inc_rename = false; # enables an input dialog for inc-rename.nvim
-        #     lsp_doc_border = false; # add a border to hover docs and signature help
-        #   };
-        #   # routes = [
-        #   #   {
-        #   #     view = "notify";
-        #   #     # filter = [
-        #   #     #   {
-        #   #     #     event = "msg_showmode";
-        #   #     #   }
-        #   #     # ];
-        #   #   }
-        #   # ];
-        # };
 
         # etc
         mini = {
@@ -287,7 +263,6 @@
         direnv.enable = true;
         nix.enable = true;
         persistence.enable = true;
-        # neocord.enable = true;
         toggleterm.enable = true;
       };
     };

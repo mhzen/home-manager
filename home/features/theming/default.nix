@@ -1,6 +1,6 @@
 {
   imports = [
     ./stylix.nix
-    ./qt.nix
+    # ./qt.nix
   ];
 }

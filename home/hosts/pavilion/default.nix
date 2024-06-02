@@ -6,10 +6,13 @@
     ../../features/shell/distrobox.nix
 
     ../../features/apps
+    ../../features/apps/discord.nix
     ../../features/apps/libreoffice.nix
     ../../features/apps/obsidian.nix
 
     ../../features/browsers/firefox.nix
+
+    ../../features/gaming
 
     ../../features/media
     ../../features/media/beet.nix

@@ -1,14 +1,14 @@
-{pkgs, ...}: {
+{config, ...}: {
   qt = {
     enable = true;
-    platformTheme = "qtct";
-    style.name = "kvantum";
+    platformTheme = "gnome";
+    style.name = "adwaita";
   };
-  xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".text = ''
-      [General]
-      theme=MateriaDark
-    '';
-    "Kvantum/MateriaDark".source = "${pkgs.materia-kde-theme}/share/Kvantum/MateriaDark";
-  };
+  # xdg.configFile = {
+  #   "Kvantum/kvantum.kvconfig".text = ''
+  #     [General]
+  #     theme=MateriaDark
+  #   '';
+  #   "Kvantum/MateriaDark".source = "${pkgs.materia-kde-theme}/share/Kvantum/MateriaDark";
+  # };
 }
