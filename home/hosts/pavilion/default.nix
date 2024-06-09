@@ -9,6 +9,7 @@
     ../../features/apps/discord.nix
     ../../features/apps/libreoffice.nix
     ../../features/apps/obsidian.nix
+    ../../features/apps/wezterm.nix
 
     ../../features/browsers/firefox.nix
 
