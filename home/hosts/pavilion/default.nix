@@ -16,6 +16,7 @@
 
     ../../features/media
     ../../features/media/beet.nix
+    ../../features/media/g4music.nix
 
     ../../features/gui/gnome.nix
 
