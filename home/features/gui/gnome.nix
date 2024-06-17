@@ -23,6 +23,13 @@
       show-window-position-bar = false;
       show-workspace-indicator = false;
     };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      screensaver = ["<Alt><Super>l"];
+    };
+    "org/gnome/shell/extensions/paperwm/keybindings" = {
+      switch-next-loop = ["<Super>l"];
+      switch-previous-loop = ["<Super>j"];
+    };
   };
 
   home.packages = with pkgs; [

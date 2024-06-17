@@ -11,8 +11,8 @@
   programs.yazi = {
     enable = true;
 
-    enableBashIntegration = config.programs.bash.enable;
-    enableZshIntegration = config.programs.zsh.enable;
+    # enableBashIntegration = config.programs.bash.enable;
+    # enableZshIntegration = config.programs.zsh.enable;
 
     settings = {
       manager = {

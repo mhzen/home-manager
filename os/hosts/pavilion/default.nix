@@ -12,6 +12,7 @@
 
     # /..desktop setup
     ../../features/gui/gnome.nix
+    # ../../features/gui/niri.nix
 
     # /..hardware setup
     ../../features/hardware/intelgpu.nix

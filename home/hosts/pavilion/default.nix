@@ -15,11 +15,14 @@
 
     ../../features/gaming
 
-    ../../features/media
+    # ../../features/media
     ../../features/media/beet.nix
     ../../features/media/g4music.nix
+    ../../features/media/celluloid.nix
+    ../../features/media/transmission.nix
 
     ../../features/gui/gnome.nix
+    # ../../features/gui/niri.nix
 
     ../../features/theming
   ];

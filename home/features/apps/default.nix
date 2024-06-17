@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./kitty.nix
+    ./localsend.nix
   ];
 
   home.packages = with pkgs; [

@@ -10,7 +10,7 @@
     nixvim = {
       enable = true;
       enableMan = true;
-      colorschemes.base16.enable = true;
+      # colorschemes.base16.enable = true;
       opts = {
         hlsearch = true;
         mouse = "a";
@@ -232,9 +232,6 @@
             right = " ";
           };
         };
-        dashboard = {
-          enable = true;
-        };
         indent-blankline = {
           enable = true;
           settings = {
@@ -258,6 +255,7 @@
               symbol = "│";
               options.try_as_border = true;
             };
+            starter = {};
           };
         };
         direnv.enable = true;

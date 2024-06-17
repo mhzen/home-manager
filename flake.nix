@@ -8,6 +8,7 @@
       "https://chaotic-nyx.cachix.org"
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
+      "https://niri.cachix.org"
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -15,6 +16,7 @@
       "chaotic-nyx.cachix.org-1:hfnxsw4pj95ii/n17ridy40aghj12wff+gqk6sonit8="
       "anyrun.cachix.org-1:pqbobmoji7nklsumv25u9qha9btjk65/c8vno3p346s="
       "hyprland.cachix.org-1:a7pgxzmz7+chwvl3/pzj6jibmioijm7ypfp8pwtkugc="
+      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
   };
 
@@ -40,6 +42,7 @@
     };
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland?submodules=1?ref=v0.40.0";
+    niri.url = "github:sodiboo/niri-flake";
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
