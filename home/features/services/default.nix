@@ -1,5 +1,5 @@
 {
   imports = [
-    ./stylix.nix
+    ./udiskie.nix
   ];
 }

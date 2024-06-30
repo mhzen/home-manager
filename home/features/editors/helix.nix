@@ -1,5 +1,5 @@
 {
-  programs.vscode = {
+  programs.helix = {
     enable = true;
   };
 }

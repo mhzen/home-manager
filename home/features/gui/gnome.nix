@@ -10,7 +10,7 @@
       enabled-extensions = [
         "paperwm@paperwm.github.com"
         "user-theme@gnome-shell-extensions.gcampax.github.com"
-        "trayIconsReloaded@selfmade.pl"
+        "appindicatorsupport@rgcjonas.gmail.com"
       ];
     };
     "org/gnome/desktop/interface" = {
@@ -35,6 +35,6 @@
   home.packages = with pkgs; [
     gnomeExtensions.paperwm
     gnomeExtensions.user-themes
-    gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.appindicator
   ];
 }

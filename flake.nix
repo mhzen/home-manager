@@ -9,6 +9,7 @@
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
       "https://niri.cachix.org"
+      "https://nix-gaming.cachix.org"
     ];
     extra-trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -17,6 +18,7 @@
       "anyrun.cachix.org-1:pqbobmoji7nklsumv25u9qha9btjk65/c8vno3p346s="
       "hyprland.cachix.org-1:a7pgxzmz7+chwvl3/pzj6jibmioijm7ypfp8pwtkugc="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
   };
 
@@ -36,13 +38,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # firefox-addons = {
+    #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    nix-gaming.url = "github:fufexan/nix-gaming";
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland?submodules=1?ref=v0.40.0";
-    niri.url = "github:sodiboo/niri-flake";
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,7 +74,7 @@
 
       imports = [
         ./home/hosts
-        ./os/hosts
+        ./system/hosts
         inputs.pre-commit-hooks.flakeModule
       ];
 

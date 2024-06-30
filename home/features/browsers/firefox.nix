@@ -10,6 +10,9 @@
     hash = "sha256-eHocB5vC6Zjz7vsvGOTGazuaUybqigODEIJV9K/h134=";
   };
 in {
+  nixpkgs.overlays = [
+    inputs.nur.overlay
+  ];
   programs.firefox = {
     enable = true;
     package = pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {};
@@ -88,7 +91,7 @@ in {
           };
         };
       };
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         proton-pass
         ublock-origin
         sponsorblock

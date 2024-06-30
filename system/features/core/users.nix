@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../shell/fish.nix
+    ../programs/fish.nix
   ];
 
   # Defines the default user.
@@ -18,15 +18,6 @@
 
   # Change me later!
   users.users.root.initialPassword = "nixos";
-
-  environment = {
-    sessionVariables = {
-      XDG_CACHE_HOME = "$HOME/.cache";
-      XDG_CONFIG_HOME = "$HOME/.config";
-      XDG_DATA_HOME = "$HOME/.local/share";
-      XDG_BIN_HOME = "$HOME/.local/bin";
-    };
-  };
 
   security.sudo.extraConfig = ''
     Defaults   insults

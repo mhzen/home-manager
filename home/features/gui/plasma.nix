@@ -17,7 +17,7 @@
     panels = [
       {
         location = "bottom";
-        height = 32;
+        height = 42;
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
@@ -25,28 +25,25 @@
               General.icon = "nix-snowflake-white";
             };
           }
-          # {
-          #   name = "org.kde.plasma.icontasks";
-          #   config = {
-          #     General.launchers = [
-          #       "applications:firefox.desktop"
-          #       "applications:org.kde.dolphin.desktop"
-          #       "applications:org.kde.konsole.desktop"
-          #     ];
-          #   };
-          # }
-          # "org.kde.plasma.systemtray"
-          # {
-          #   digitalClock = {
-          #     calendar.firstDayOfWeek = "sunday";
-          #     time.format = "24h";
-          #   };
-          # }
           "org.kde.plasma.panelspacer"
-          "org.kde.plasma.icontasks"
+          {
+            name = "org.kde.plasma.icontasks";
+            config = {
+              General.launchers = [
+                "applications:firefox.desktop"
+                "applications:org.kde.dolphin.desktop"
+                "applications:kitty.desktop"
+              ];
+            };
+          }
           "org.kde.plasma.panelspacer"
           "org.kde.plasma.systemtray"
-          "org.kde.plasma.digitalclock"
+          {
+            digitalClock = {
+              calendar.firstDayOfWeek = "sunday";
+              time.format = "24h";
+            };
+          }
         ];
       }
     ];

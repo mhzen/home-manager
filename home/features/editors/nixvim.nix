@@ -128,13 +128,13 @@
             silent = true;
           };
         }
-        {
-          action = "<cmd>ToggleTerm<CR>";
-          key = "<leader>ft";
-          options = {
-            silent = true;
-          };
-        }
+        # {
+        #   action = "<cmd>ToggleTerm<CR>";
+        #   key = "<leader>ft";
+        #   options = {
+        #     silent = true;
+        #   };
+        # }
       ];
       plugins = {
         # coding
@@ -185,15 +185,6 @@
         lsp = {
           enable = true;
           servers = {
-            tsserver.enable = true;
-            rust-analyzer = {
-              enable = true;
-              installCargo = false;
-              installRustc = false;
-            };
-            lua-ls.enable = true;
-            pyright.enable = true;
-            dockerls.enable = true;
             nil_ls.enable = true;
           };
         };
@@ -261,7 +252,10 @@
         direnv.enable = true;
         nix.enable = true;
         persistence.enable = true;
-        toggleterm.enable = true;
+        toggleterm = {
+          enable = true;
+          settings.insert_mappings = true;
+        };
       };
     };
   };

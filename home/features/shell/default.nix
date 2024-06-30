@@ -5,12 +5,6 @@
     ./bash.nix
 
     # shell ext
-    ./bat.nix
-    ./lsd.nix
-    ./zoxide.nix
-    ./ripgrep.nix
-    ./starship.nix
-    ./ouch.nix
     ./yazi.nix
 
     # git
@@ -20,9 +14,6 @@
     # nix stuff
     ./direnv.nix
     ./nix-index.nix
-
-    # shell editor
-    ../editors/nixvim.nix
   ];
 
   home.packages = with pkgs; [
@@ -35,5 +26,28 @@
 
     fd
     trashy
+    ouch
   ];
+
+  programs = {
+    bat = {
+      enable = true;
+      extraPackages = with pkgs.bat-extras; [batman batdiff batgrep];
+    };
+    fzf.enable = true;
+    lsd = {
+      enable = true;
+      enableAliases = true;
+    };
+    zoxide.enable = true;
+    ripgrep = {
+      enable = true;
+      arguments = [
+        "--max-columns=150"
+        "--max-columns-preview"
+        "--smart-case"
+      ];
+    };
+    starship.enable = true;
+  };
 }

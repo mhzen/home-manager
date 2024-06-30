@@ -1,17 +1,25 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    # jc141
-    dwarfs
-    fuse-overlayfs
-    psmisc
-    bubblewrap
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  home.packages = with pkgs;
+    [
+      # jc141
+      dwarfs
+      fuse-overlayfs
+      psmisc
+      bubblewrap
 
-    # prism
-    (prismlauncher.override {withWaylandGLFW = true;})
-    # prismlauncher
-    # temurin-bin-17
+      # prism
+      (prismlauncher.override {withWaylandGLFW = true;})
 
-    # steam
-    steam
-  ];
+      bottles
+      lutris
+    ]
+    ++ [
+      inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+    ];
 }
+# steam is on nixos config
+

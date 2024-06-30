@@ -6,11 +6,11 @@
 }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    ../../wayland/waybar.nix
-    ../../wayland/anyrun.nix
-    ../../wayland/rofi.nix
-    ../../wayland/wlogout.nix
-    ../../wayland/wpaperd.nix
+    ../wayland/waybar.nix
+    ../wayland/anyrun.nix
+    ../wayland/rofi.nix
+    ../wayland/wlogout.nix
+    ../wayland/wpaperd.nix
   ];
 
   home.packages = with pkgs; [

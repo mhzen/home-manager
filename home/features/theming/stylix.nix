@@ -8,10 +8,10 @@
   ];
 
   stylix = {
+    enable = true;
     image = pkgs.fetchurl {
-      name = "finalizer.png";
-      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/minimalistic/finalizer.png";
-      sha256 = "sha256-I1g+sVwIbjo4JOW5LIf7anYY7kJLT5ckPY0peplkG0U=";
+      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/forest.jpg";
+      sha256 = "sha256-3oHN2lEYUbagehGBf5CIVLCjA+HhZv6WECeV9bqVfJE=";
     };
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
     polarity = "dark";
@@ -25,7 +25,11 @@
         name = "Inter";
       };
       monospace = {
-        package = pkgs.nerdfonts;
+        package = with pkgs; (nerdfonts.override {
+          fonts = [
+            "JetBrainsMono"
+          ];
+        });
         name = "JetBrains Mono Nerd Font";
       };
       emoji = {

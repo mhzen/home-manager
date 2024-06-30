@@ -21,4 +21,9 @@
   systemd.user.startServices = "sd-switch";
 
   home.stateVersion = "23.11";
+
+  home.sessionPath = [
+    "$HOME/.nix-profile/bin"
+    "$HOME/.nix-profile/share/applications"
+  ];
 }

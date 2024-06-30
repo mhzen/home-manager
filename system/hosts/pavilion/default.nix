@@ -11,8 +11,9 @@
     ../../features/core
 
     # /..desktop setup
-    ../../features/gui/gnome.nix
-    # ../../features/gui/niri.nix
+    # ../../features/gui/gnome.nix
+    ../../features/gui/plasma.nix
+    # ../../features/gui/hyprland.nix
 
     # /..hardware setup
     ../../features/hardware/intelgpu.nix
@@ -26,6 +27,10 @@
     ../../features/services/dns.nix
     ../../features/services/kanata.nix
     ../../features/services/flatpak.nix
+
+    # programs
+    ../../features/programs
+    ../../features/programs/steam.nix
   ];
 
   # boot

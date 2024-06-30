@@ -8,6 +8,7 @@
     # fix stuff
     shared-mime-info
     xdg-utils
-    pavucontrol
+    pwvucontrol
+    pika-backup
   ];
 }
