@@ -31,6 +31,7 @@
     # programs
     ../../features/programs
     ../../features/programs/steam.nix
+    ../../features/programs/virt-manager.nix
   ];
 
   # boot

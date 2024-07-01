@@ -18,14 +18,27 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/e0d53d02-d577-4f0d-967f-3d483a4199a1";
+    device = "/dev/disk/by-uuid/ecd2c2d1-eebc-4837-a8ba-5622f401ef6f";
     fsType = "btrfs";
-    options = ["subvol=@"];
+    options = ["subvol=@root"];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/2CB2-55E4";
+    device = "/dev/disk/by-uuid/318A-F47E";
     fsType = "vfat";
+    options = ["fmask=0022" "dmask=0022"];
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/ecd2c2d1-eebc-4837-a8ba-5622f401ef6f";
+    fsType = "btrfs";
+    options = ["subvol=@home" "compress=zstd"];
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/ecd2c2d1-eebc-4837-a8ba-5622f401ef6f";
+    fsType = "btrfs";
+    options = ["subvol=@nix" "compress=zstd" "noatime"];
   };
 
   swapDevices = [];
@@ -35,7 +48,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s20f0u3.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

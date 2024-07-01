@@ -16,6 +16,7 @@
 
       bottles
       lutris
+      protonplus
     ]
     ++ [
       inputs.nix-gaming.packages.${pkgs.system}.wine-ge
