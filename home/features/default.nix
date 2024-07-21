@@ -31,15 +31,21 @@
       after = ["writeBoundary" "createXdgUserDirectories"];
       before = [];
       data = ''
-        rm -rf ${config.xdg.dataHome}/"applications/home-manager"
-        mkdir -p ${config.xdg.dataHome}/"applications/home-manager"
-        cp -Lr ${config.home.homeDirectory}/.nix-profile/share/applications/* ${config.xdg.dataHome}/"applications/home-manager/"
+        rm -rf ${config.home.homeDirectory}/.nix-desktop-files
+        rm -rf ${config.home.homeDirectory}/.local/share/applications/home-manager
+        rm -rf ${config.home.homeDirectory}/.icons/nix-icons
+        mkdir -p ${config.home.homeDirectory}/.nix-desktop-files
+        mkdir -p ${config.home.homeDirectory}/.icons
+        ln -sf ${config.home.homeDirectory}/.nix-profile/share/icons ${config.home.homeDirectory}/.icons/nix-icons
+        /usr/bin/desktop-file-install ${config.home.homeDirectory}/.nix-profile/share/applications/*.desktop --dir ${config.home.homeDirectory}/.local/share/applications/home-manager
+        sed -i 's/Exec=/Exec=\/home\/${config.home.username}\/.nix-profile\/bin\//g' ${config.home.homeDirectory}/.local/share/applications/home-manager/*.desktop
+        /usr/bin/update-desktop-database ${config.home.homeDirectory}/.local/share/applications
       '';
     };
   };
 
-  home.sessionPath = [
-    "$HOME/.nix-profile/bin"
-    "$HOME/.nix-profile/share/applications"
-  ];
+  # home.sessionPath = [
+  #   "$HOME/.nix-profile/bin"
+  #   "$HOME/.nix-profile/share/applications"
+  # ];
 }

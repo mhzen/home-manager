@@ -10,7 +10,7 @@
 
     ../../features/apps
     ../../features/apps/discord.nix
-    ../../features/apps/newsflash.nix
+    # ../../features/apps/obsidian.nix
 
     ../../features/browsers/firefox.nix
 
