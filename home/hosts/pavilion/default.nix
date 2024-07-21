@@ -9,6 +9,8 @@
     ../../features/editors/vscode.nix
 
     ../../features/apps
+    ../../features/apps/discord.nix
+    ../../features/apps/newsflash.nix
 
     ../../features/browsers/firefox.nix
 
@@ -18,7 +20,8 @@
     ../../features/media/g4music.nix
     ../../features/media/transmission.nix
 
-    ../../features/gui/plasma.nix
+    # ../../features/gui/plasma.nix
+    ../../features/gui/gnome.nix
 
     ../../features/services
 

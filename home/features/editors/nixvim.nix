@@ -194,16 +194,18 @@
         # treesitter
         treesitter = {
           enable = true;
-          ensureInstalled = "all";
-          incrementalSelection = {
-            enable = true;
-            keymaps = {
-              initSelection = "+";
-              nodeIncremental = "+";
-              nodeDecremental = "-";
+          nixvimInjections = true;
+          settings = {
+            ensure_installed = "all";
+            incremental_selection = {
+              enable = true;
+              keymaps = {
+                init_selection = "+";
+                node_incremental = "+";
+                node_decremental = "-";
+              };
             };
           };
-          nixvimInjections = true;
         };
         cmp-treesitter.enable = true;
 

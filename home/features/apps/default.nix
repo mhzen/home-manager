@@ -2,6 +2,7 @@
   imports = [
     ./kitty.nix
     ./localsend.nix
+    ./obsidian.nix
   ];
 
   home.packages = with pkgs; [

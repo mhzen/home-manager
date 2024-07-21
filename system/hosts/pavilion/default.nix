@@ -11,9 +11,7 @@
     ../../features/core
 
     # /..desktop setup
-    # ../../features/gui/gnome.nix
-    ../../features/gui/plasma.nix
-    # ../../features/gui/hyprland.nix
+    ../../features/gui/gnome.nix
 
     # /..hardware setup
     ../../features/hardware/intelgpu.nix

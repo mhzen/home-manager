@@ -9,12 +9,13 @@
 
   stylix = {
     enable = true;
-    image = pkgs.fetchurl {
-      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/forest.jpg";
-      sha256 = "sha256-3oHN2lEYUbagehGBf5CIVLCjA+HhZv6WECeV9bqVfJE=";
-    };
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-medium.yaml";
-    polarity = "dark";
+    # image = pkgs.fetchurl {
+    #   url = "https://gruvbox-wallpapers.pages.dev/wallpapers/irl/forest.jpg";
+    #   sha256 = "sha256-3oHN2lEYUbagehGBf5CIVLCjA+HhZv6WECeV9bqVfJE=";
+    # };
+    image = ./wallhaven-l3971q.png;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/material.yaml";
+    polarity = "light";
     fonts = {
       serif = {
         package = pkgs.dejavu_fonts;

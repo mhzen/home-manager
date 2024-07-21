@@ -15,5 +15,6 @@
       enable = true;
       wifi.backend = "iwd";
     };
+    firewall.enable = false;
   };
 }
