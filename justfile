@@ -1,5 +1,5 @@
 update:
-  home-manager switch --flake .#mham@ttyhero
+  home-manager switch --flake .
 
 clean:
   nix-collect-garbage -d

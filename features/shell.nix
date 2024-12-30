@@ -36,7 +36,7 @@
         };
         linux = {
           home_manager_arguments = [
-            "--flake" ".#mham@ttyhero"
+            "--flake" "/home/mham/.config/nix-config"
           ];
         };
       };

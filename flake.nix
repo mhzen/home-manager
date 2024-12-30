@@ -1,6 +1,15 @@
 {
   description = "Home Manager configuration";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://cache.nixos.org?priority=10"
+    ];
+    extra-trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
@@ -12,24 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  # outputs = {
-  #   nixpkgs,
-  #   home-manager,
-  #   nix-index-database,
-  #   ...
-  # }: 
-  # let
-  #   lib = nixpkgs.lib;
-  #   system = "x86_64-linux";
-  #   pkgs = import nixpkgs { inherit system; };
-  # in {
-  #   homeConfigurations.mham =
-  #     home-manager.lib.homeManagerConfiguration {
-  #       inherit pkgs;
-  #       modules = [ ./home.nix ];
-  #     };
-  #   };
 
   outputs = {
     self,
@@ -45,7 +36,7 @@
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
     homeConfigurations = {
-      "mham@ttyhero" = home-manager.lib.homeManagerConfiguration {
+      "mham@laptop" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
