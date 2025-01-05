@@ -5,7 +5,7 @@
     trashy
     ouch
     lazygit
-    gcc
+    devenv
   ];
 
   programs = {
