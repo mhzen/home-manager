@@ -6,6 +6,7 @@
     ouch
     lazygit
     devenv
+    clang
   ];
 
   programs = {
