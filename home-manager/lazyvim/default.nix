@@ -5,6 +5,15 @@
   }; 
 
   home.packages = with pkgs; [
+    clang
+    nodejs-slim
+
+    # lsp
+    luajitPackages.lua-lsp
+
+    # formatter
+    shfmt
+    stylua
   ];
 
   home.file = {

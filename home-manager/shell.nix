@@ -8,7 +8,6 @@
     ouch
     lazygit
     devenv
-    clang
     fastfetch
     devbox
     just
