@@ -40,7 +40,9 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
-          ./home.nix
+          ./home-manager
+          ./home-manager/font.nix
+          ./home-manager/configs
         ];
       };
     };

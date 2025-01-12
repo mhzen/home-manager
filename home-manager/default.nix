@@ -14,7 +14,16 @@
 
   programs.home-manager.enable = true;
 
-  # systemd.user.startServices = "sd-switch";
+  systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = "24.11";
+  home = {
+    username = "mham";
+    homeDirectory = "/home/mham";
+    stateVersion = "24.11";
+  };
+
+  imports = [
+    ./shell.nix
+    ./lazyvim
+  ];
 }
