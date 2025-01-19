@@ -1,5 +1,9 @@
-{ pkgs, inputs, ...}: {
-  imports = [ inputs.nix-index-database.hmModules.nix-index ];
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [inputs.nix-index-database.hmModules.nix-index];
 
   home.packages = with pkgs; [
     tealdeer
@@ -41,7 +45,8 @@
         };
         linux = {
           home_manager_arguments = [
-            "--flake" "/home/mham/.config/nix-config"
+            "--flake"
+            "/home/mham/.config/nix-config"
           ];
         };
       };
@@ -54,54 +59,30 @@
       '';
       shellAbbrs = {
         rt = "trash put";
-        # ls = "lsd";
       };
       functions = {
         mkcd = "mkdir -pv $argv; cd $argv;";
-        yy = ''
-          set tmp (mktemp -t "yazi-cwd.XXXXXX")
-          yazi $argv --cwd-file="$tmp"
-          if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-          	cd -- "$cwd"
-          end
-          rm -f -- "$tmp"
-        '';
       };
+      plugins = [
+        { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
+      ];
     };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
+
     git = {
       enable = true;
       userName = "mham";
       userEmail = "warofzen1@proton.me";
       extraConfig = {
-        init.defaultBranch = "main";
-
-        gpg = {
-          format = "ssh";
-          # ssh.defaultKeyCommand = "sh -c 'echo key::$(ssh-add -L | head -1)'";
-        };
-        commit.gpgsign = true;
-
-        commit.verbose = true;
-        diff.algorithm = "histogram";
-        log.date = "iso";
-        column.ui = "auto";
-        branch.sort = "committerdate";
-        # Automatically track remote branch
-        push.autoSetupRemote = true;
-        # Reuse merge conflict fixes when rebasing
-        rerere.enabled = true;
-
+        gpg.format = "ssh";
         user.signingkey = "~/.ssh/id_ed25519.pub";
       };
-      ignores = [
-        ".direnv"
-        "result"
-      ];
     };
+
     nix-index-database.comma.enable = true;
     command-not-found.enable = false;
     nix-index = {

@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }: {
-
+{
+  pkgs,
+  lib,
+  ...
+}: {
   xdg.configFile = {
     # https://ghostty.org/docs/config/reference
     "ghostty/config".text = ''
@@ -17,6 +20,15 @@
       BottomUp
       SudoLoop
       CleanAfter
+    '';
+
+    "Code/User/settings.json".text = ''
+      {
+        "workbench.startupEditor": "none",
+        "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
+        "editor.cursorBlinking": "smooth",
+        "files.autoSave": "onWindowChange"
+      }
     '';
   };
 }
