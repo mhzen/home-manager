@@ -64,7 +64,10 @@
         mkcd = "mkdir -pv $argv; cd $argv;";
       };
       plugins = [
-        { name = "puffer"; src = pkgs.fishPlugins.puffer.src; }
+        {
+          name = "puffer";
+          src = pkgs.fishPlugins.puffer.src;
+        }
       ];
     };
 
@@ -79,6 +82,7 @@
       userEmail = "warofzen1@proton.me";
       extraConfig = {
         gpg.format = "ssh";
+        commit.gpgsign = true;
         user.signingkey = "~/.ssh/id_ed25519.pub";
       };
     };

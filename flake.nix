@@ -49,7 +49,7 @@
       "mham@air" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
-        modules = [ ./home-manager/hosts/air.nix ];
+        modules = [./home-manager/hosts/air.nix];
       };
     };
   };
