@@ -12,7 +12,7 @@
 ├── justfile
 └── shell.nix
 ```
-# warofzen/nix-config
+# mhzen/nix-config
 
 KISS home-manager config for my personal use to be used in a non-nixos host (Bluefin and Arch Linux currently).
 My old, full nixos config, is available in the old branch.

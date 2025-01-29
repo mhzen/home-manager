@@ -26,31 +26,21 @@
   outputs = {
     self,
     nixpkgs,
-    systems,
     home-manager,
     nix-index-database,
     ...
   } @ inputs: let
-    inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib;
-    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs (import systems) (
-      system:
-        import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        }
-    );
+    system = "x86_64-linux";
+    user = "mham";
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
 
-    homeConfigurations = {
-      "mham@air" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsFor.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home-manager/hosts/air.nix];
-      };
+    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+      pkgs = pkgs;
+      extraSpecialArgs = {inherit inputs user;};
+      modules = [./home-manager];
     };
+
+    devShells.${system} = import ./shell.nix {inherit pkgs;};
   };
 }

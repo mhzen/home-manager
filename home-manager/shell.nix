@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [inputs.nix-index-database.hmModules.nix-index];
@@ -93,5 +94,15 @@
       enable = true;
       # enableFishIntegration = true;
     };
+
+    # zellij = {
+    #   enable = true;
+    #   settings = {
+    #     simplified_ui = true;
+    #     default_shell = "${lib.getExe pkgs.fish}";
+    #     pane_frames = false;
+    #     theme = "gruvbox";
+    #   };
+    # };
   };
 }

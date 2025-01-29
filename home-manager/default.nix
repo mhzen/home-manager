@@ -1,4 +1,4 @@
-{...}: {
+{ homeStateVersion, user,...}: {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -17,8 +17,8 @@
   systemd.user.startServices = "sd-switch";
 
   home = {
-    username = "mham";
-    homeDirectory = "/home/mham";
+    username = user;
+    homeDirectory = "/home/${user}";
     stateVersion = "24.11";
   };
 
