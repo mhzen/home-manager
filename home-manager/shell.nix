@@ -7,14 +7,8 @@
   imports = [inputs.nix-index-database.hmModules.nix-index];
 
   home.packages = with pkgs; [
-    tealdeer
-    fd
     trashy
-    ouch
     lazygit
-    devenv
-    fastfetch
-    devbox
     just
   ];
 
@@ -23,39 +17,37 @@
       enable = true;
       extraPackages = with pkgs.bat-extras; [batman batdiff batgrep];
     };
+
+    direnv = {
+      enable = true;
+      silent = true;
+      nix-direnv.enable = true;
+    };
+
+    fd.enable = true;
+
     fzf.enable = true;
+
     lsd = {
       enable = true;
       enableAliases = true;
     };
+
+    ripgrep.enable = true;
+
+    starship = {
+      enable = true;
+    };
+
+    tealdeer = {
+      enable = true;
+    };
+
     zoxide.enable = true;
-    ripgrep = {
-      enable = true;
-      arguments = [
-        "--max-columns=150"
-        "--max-columns-preview"
-        "--smart-case"
-      ];
-    };
-    starship.enable = true;
-    topgrade = {
-      enable = true;
-      settings = {
-        misc = {
-          pre_sudo = true;
-        };
-        linux = {
-          home_manager_arguments = [
-            "--flake"
-            "/home/mham/.config/nix-config"
-          ];
-        };
-      };
-    };
+
     fish = {
       enable = true;
       interactiveShellInit = ''
-        fish_add_path ~/.local/bin
         set fish_greeting
       '';
       shellAbbrs = {
@@ -72,11 +64,6 @@
       ];
     };
 
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-
     git = {
       enable = true;
       userName = "mham";
@@ -88,21 +75,36 @@
       };
     };
 
+    topgrade = {
+      enable = true;
+      settings = {
+        misc = {
+          pre_sudo = true;
+        };
+        linux = {
+          home_manager_arguments = [
+            "--flake"
+            "/home/mham/.config/nix-config"
+          ];
+        };
+      };
+    };
+
+
     nix-index-database.comma.enable = true;
     command-not-found.enable = false;
     nix-index = {
       enable = true;
-      # enableFishIntegration = true;
     };
 
-    # zellij = {
-    #   enable = true;
-    #   settings = {
-    #     simplified_ui = true;
-    #     default_shell = "${lib.getExe pkgs.fish}";
-    #     pane_frames = false;
-    #     theme = "gruvbox";
-    #   };
-    # };
+    zellij = {
+      enable = true;
+      settings = {
+        simplified_ui = true;
+        default_shell = "${lib.getExe pkgs.fish}";
+        pane_frames = false;
+        theme = "gruvbox";
+      };
+    };
   };
 }

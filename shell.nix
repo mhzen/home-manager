@@ -4,9 +4,7 @@
     nativeBuildInputs = with pkgs; [
       bashInteractive
       home-manager
-      git
       just
-      nixd
     ];
   };
 }
