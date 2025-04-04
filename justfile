@@ -1,7 +1,4 @@
-_default:
-    @just switch
-
-switch: add
+switch:
   home-manager switch --flake .
 
 clean:

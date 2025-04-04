@@ -1,18 +1,8 @@
 {
   description = "Home Manager configuration";
 
-  nixConfig = {
-    extra-substituters = [
-      "https://cache.nixos.org?priority=10"
-    ];
-    extra-trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-  };
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    systems.url = "github:nix-systems/default-linux";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +11,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs = {
@@ -28,19 +19,20 @@
     nixpkgs,
     home-manager,
     nix-index-database,
+    nixgl,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    user = "mham";
+    user = "mhzen";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."${user}@stinkpad" = home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs;
       extraSpecialArgs = {inherit inputs user;};
-      modules = [./home-manager];
+      modules = [
+        ./home.nix
+        ./stinkpad.nix
+      ];
     };
-
-    devShells.${system} = import ./shell.nix {inherit pkgs;};
   };
 }
