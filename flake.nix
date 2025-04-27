@@ -26,12 +26,11 @@
     user = "mhzen";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    homeConfigurations."${user}@stinkpad" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."${user}@GLaDOS" = home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs;
       extraSpecialArgs = {inherit inputs user;};
       modules = [
         ./home.nix
-        ./stinkpad.nix
       ];
     };
   };
