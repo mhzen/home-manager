@@ -26,11 +26,12 @@
     user = "mhzen";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    homeConfigurations."${user}@GLaDOS" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."${user}@iliad" = home-manager.lib.homeManagerConfiguration {
       pkgs = pkgs;
       extraSpecialArgs = {inherit inputs user;};
       modules = [
         ./home.nix
+	      ./iliad.nix
       ];
     };
   };

@@ -21,6 +21,14 @@
     };
   };
 
+  nix = {
+    gc = {
+      automatic = true;
+      frequency = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+
   systemd.user.startServices = false;
   targets.genericLinux.enable = true;
 
@@ -28,16 +36,6 @@
     username = user;
     homeDirectory = "/home/${user}";
     stateVersion = "24.11";
-    sessionVariables = {
-      SHELL = "${lib.getExe pkgs.fish}";
-    };
-    path = {
-      enable = true;
-      prepend = [
-        "$HOME/.nix-profile/bin"
-        "/nix/var/nix/profiles/default/bin"
-      ];
-    };
   };
 
   manual = {
@@ -46,10 +44,9 @@
     manpages.enable = false;
   };
 
-  nixGL.packages = inputs.nixgl.packages;
+  # nixGL.packages = inputs.nixgl.packages;
 
   home.packages = with pkgs; [
-    asciinema
     bat
     fd
     ripgrep
@@ -58,6 +55,8 @@
     lazygit
     just
     devbox
+    gh
+
     nerd-fonts.jetbrains-mono
   ];
 
@@ -104,7 +103,7 @@
       '';
       shellAbbrs = {
         rt = "trash-put";
-        up = "home-manager switch -b backup";
+        lg = "lazygit";
       };
       functions = {
         mkcd = "mkdir -pv $argv; cd $argv;";
@@ -114,11 +113,12 @@
           name = "puffer";
           src = pkgs.fishPlugins.puffer.src;
         }
-        {
-          name = "hydro";
-          src = pkgs.fishPlugins.hydro.src;
-        }
       ];
+    };
+
+    starship = {
+      enable = true;
+      enableFishIntegration = true;
     };
 
     git = {
