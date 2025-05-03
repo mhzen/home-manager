@@ -30,8 +30,8 @@
       pkgs = pkgs;
       extraSpecialArgs = {inherit inputs user;};
       modules = [
-        ./home.nix
-	      ./iliad.nix
+        ./home
+	      ./home/iliad.nix
       ];
     };
   };

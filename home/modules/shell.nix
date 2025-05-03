@@ -1,50 +1,13 @@
 {
-  config,
   pkgs,
   inputs,
-  lib,
   user,
   ...
 }: {
   imports = [
-    ./lazyvim
     inputs.nix-index-database.hmModules.nix-index
+    ./lazyvim
   ];
-
-  nixpkgs = {
-    overlays = [
-      inputs.nixgl.overlays.default
-    ];
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
-    };
-  };
-
-  nix = {
-    gc = {
-      automatic = true;
-      frequency = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
-
-  systemd.user.startServices = false;
-  targets.genericLinux.enable = true;
-
-  home = {
-    username = user;
-    homeDirectory = "/home/${user}";
-    stateVersion = "24.11";
-  };
-
-  manual = {
-    json.enable = false;
-    html.enable = false;
-    manpages.enable = false;
-  };
-
-  # nixGL.packages = inputs.nixgl.packages;
 
   home.packages = with pkgs; [
     bat
@@ -56,25 +19,10 @@
     just
     devbox
     gh
-
-    nerd-fonts.jetbrains-mono
   ];
 
   programs = {
     home-manager.enable = true;
-
-    # ghostty = {
-    #   enable = true;
-    #   enableFishIntegration = true;
-    #   package = (config.lib.nixGL.wrap pkgs.ghostty);
-    #   settings = {
-    #     font-family = "Jetbrains Mono Nerd Font";
-    #     font-size = "14";
-    #     command = "${lib.getExe pkgs.fish}";
-    #     theme = "GruvboxDarkHard";
-    #     maximize = true;
-    #   };
-    # };
 
     direnv = {
       enable = true;
@@ -137,16 +85,5 @@
     nix-index = {
       enable = true;
     };
-  };
-
-  xdg.configFile = {
-    # https://ghostty.org/docs/config/reference
-    "ghostty/config".text = ''
-      font-family = JetBrainsMono Nerd Font Mono
-      font-size = 14
-      command = ${lib.getExe pkgs.fish}
-      theme = GruvboxDarkHard
-      maximize = true
-    '';
   };
 }
