@@ -30,7 +30,7 @@
     helix = {
       enable = true;
       defaultEditor = true;
-      ignores = [ ".build/" "!.gitignore" ];
+      ignores = [".build/" "!.gitignore"];
       package = pkgs.evil-helix;
       extraPackages = with pkgs; [
         nil
