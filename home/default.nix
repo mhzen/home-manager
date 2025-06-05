@@ -1,7 +1,4 @@
-{
-  user,
-  ...
-}:{
+{user, ...}: {
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -21,7 +18,7 @@
 
   home = {
     username = user;
-    homeDirectory = "/home/${user}";
+    homeDirectory = "/home/mhzen";
     stateVersion = "24.11";
   };
 
@@ -30,4 +27,6 @@
     html.enable = false;
     manpages.enable = false;
   };
+
+  programs.home-manager.enable = true;
 }

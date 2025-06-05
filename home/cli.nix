@@ -6,43 +6,45 @@
 }: {
   imports = [
     inputs.nix-index-database.hmModules.nix-index
-    ./lazyvim
   ];
 
   home.packages = with pkgs; [
     bat
     fd
+    fzf
     ripgrep
-    trash-cli
-    television
     lazygit
     just
     devbox
     gh
+    zoxide
   ];
 
   programs = {
-    home-manager.enable = true;
-
     direnv = {
       enable = true;
       silent = true;
       nix-direnv.enable = true;
     };
 
-    fzf.enable = true;
+    helix = {
+      enable = true;
+      defaultEditor = true;
+      ignores = [ ".build/" "!.gitignore" ];
+      package = pkgs.evil-helix;
+      settings = {
+        theme = "gruvbox";
+        editor = {
+          line-number = "relative";
+          lsp.display-messages = true;
+        };
+      };
+    };
 
     lsd = {
       enable = true;
       enableAliases = true;
     };
-
-    tealdeer = {
-      enable = true;
-      settings.updates.auto_update = true;
-    };
-
-    zoxide.enable = true;
 
     fish = {
       enable = true;

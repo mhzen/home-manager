@@ -11,7 +11,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs = {
@@ -26,13 +25,15 @@
     user = "mhzen";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-    homeConfigurations."${user}@iliad" = home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgs;
-      extraSpecialArgs = {inherit inputs user;};
-      modules = [
-        ./home
-	      ./home/iliad.nix
-      ];
+    homeConfigurations = {
+      "mhzen@hinge" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {inherit inputs user;};
+        modules = [
+          ./home
+          ./home/hosts/hinge.nix
+        ];
+      }; 
     };
   };
-}
+} 
