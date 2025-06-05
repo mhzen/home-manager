@@ -32,6 +32,11 @@
       defaultEditor = true;
       ignores = [ ".build/" "!.gitignore" ];
       package = pkgs.evil-helix;
+      extraPackages = with pkgs; [
+        nil
+        lua-language-server
+        marksman
+      ];
       settings = {
         theme = "gruvbox";
         editor = {
@@ -43,7 +48,7 @@
 
     lsd = {
       enable = true;
-      enableAliases = true;
+      enableFishIntegration = true;
     };
 
     fish = {

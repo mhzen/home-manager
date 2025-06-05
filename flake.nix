@@ -17,8 +17,6 @@
     self,
     nixpkgs,
     home-manager,
-    nix-index-database,
-    nixgl,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -33,7 +31,7 @@
           ./home
           ./home/hosts/hinge.nix
         ];
-      }; 
+      };
     };
   };
-} 
+}
