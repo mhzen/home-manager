@@ -12,7 +12,7 @@
       theme = gruvbox-material
       maximize = true
     '';
-    "Code/User/preferences".text = ''
+    "Code/User/settings.json".text = ''
       {
         "window.titleBarStyle": "custom",
         "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Symbols Nerd Font Mono'",
