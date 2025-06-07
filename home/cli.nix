@@ -45,6 +45,8 @@
       };
     };
 
+    jujutsu.enable = true;
+
     lsd = {
       enable = true;
       enableFishIntegration = true;
