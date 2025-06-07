@@ -12,5 +12,15 @@
       theme = gruvbox-material
       maximize = true
     '';
+    "Code/User/preferences".text = ''
+      {
+        "window.titleBarStyle": "custom",
+        "editor.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace', monospace, 'Symbols Nerd Font Mono'",
+        "update.mode": "none",
+        "workbench.startupEditor": "none",
+        "telemetry.telemetryLevel": "off",
+        "telemetry.feedback.enabled": false
+      }
+    '';
   };
 }
