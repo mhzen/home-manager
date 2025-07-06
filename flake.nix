@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -20,16 +16,15 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    user = "mhzen";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     homeConfigurations = {
-      "mhzen@hinge" = home-manager.lib.homeManagerConfiguration {
+      "mhzen@silverblah" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = {inherit inputs user;};
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home
-          ./home/hosts/hinge.nix
+          ./home/silverblah.nix
         ];
       };
     };
